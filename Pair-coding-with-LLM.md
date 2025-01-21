@@ -28,3 +28,15 @@ def calculate_average(numbers):
 ```
 
 > Please, write a python function named calculate_area that takes an argument radius. The function should calculate the area of a circle given the radius. Ensure that the function handles non-numeric inputs by raising a ValueError with the message 'Input must be a numeric value.'. Include comments in the code explaining each step.
+
+---
+
+### Iterative Prompting
+
+> write a python function using the requests library to download a file from a URL and save the file to disk without using third-party libraries like wget.
+
+> Create a REST API in flask to return user data
+
+> Now add error handling to the API to handle 404 and 500 status codes
+
+> please, add detailed comments that explain this code. Highlight any complex parts that might require deeper explaination.
