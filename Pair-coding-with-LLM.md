@@ -40,3 +40,19 @@ def calculate_average(numbers):
 > Now add error handling to the API to handle 404 and 500 status codes
 
 > please, add detailed comments that explain this code. Highlight any complex parts that might require deeper explaination.
+
+---
+
+### Giving the LLM feedback
+
+> Write a python function to calculate the factorial of a number
+
+> Please, modify the function to include a check that ensures the input is a non-negative integer
+
+> create a python function to check if a string is a palaindrome
+
+> Update the code to ensure that the string isn't empty
+
+> write a python function to find all the unique characters in a string
+
+> Please, explain how to use Python's set function to calculate the unique characters in a string
