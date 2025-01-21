@@ -143,3 +143,10 @@ print(calcuate_discount(100, 105)) # Should raise an exception
 - **Assign a role:** Assign a role to tailor the output
 - **Request an expert opinion:** Assign an expert role and ask the LLM to evaluate the work already done to further refind it
 - **Give feedback:** Iteratively prompt the LLM and provide feedback on the output to get closer to expected results
+
+### Getting the most out of LLM
+
+- Experiment with what LLM can do
+- Test LLM code carefully
+- Use LLM as a learning tool
+- You are the context expert
