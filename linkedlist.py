@@ -37,3 +37,11 @@ class LinkedList:
         while current:
             print(current.data)
             current = current.next
+
+
+mylist = LinkedList()
+mylist.append("X")
+mylist.append("X")
+mylist.append("Y")
+mylist.append("Z")
+mylist.print_list()
