@@ -10,19 +10,25 @@ class TreeNode:
 
 
 class BinaryTree:
-    def __init__(self):
+    def __init__(self, max_nodes=10000):
         self.root = None
         self.lock = threading.Lock()  # Thread safety
+        self.node_count = 0
+        self.max_nodes = max_nodes  # Security: Limit maximum nodes
 
     def insert(self, key):
         with self.lock:
+            if self.node_count >= self.max_nodes:
+                raise MemoryError("Node limit exceeded. Preventing DoS attack.")
             if self.root is None:
                 self.root = TreeNode(key)
+                self.node_count += 1
             else:
                 self.root = self._insert(self.root, key)
 
     def _insert(self, node, key):
         if node is None:
+            self.node_count += 1
             return TreeNode(key)
 
         if key < node.val:
@@ -32,7 +38,6 @@ class BinaryTree:
         else:
             return node  # Ignore duplicates
 
-        # Update height and balance tree
         node.height = 1 + max(self._get_height(node.left), self._get_height(node.right))
         return self._balance(node)
 
@@ -81,6 +86,17 @@ class BinaryTree:
             print(node.val, end=" ")
             self.inorder(node.right)
 
+    def search(self, key):
+        with self.lock:
+            return self._search(self.root, key)
+
+    def _search(self, node, key):
+        if node is None or node.val == key:
+            return node is not None
+        if key < node.val:
+            return self._search(node.left, key)
+        return self._search(node.right, key)
+
 
 # Example usage
 bt = BinaryTree()
@@ -89,3 +105,5 @@ for value in [8, 3, 10, 1, 6, 4, 7]:
 
 print("Inorder traversal of the balanced binary tree:")
 bt.inorder(bt.root)
+print("\nSearching for value 6:", bt.search(6))
+print("Searching for value 15:", bt.search(15))
