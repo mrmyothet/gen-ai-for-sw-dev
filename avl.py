@@ -1,5 +1,13 @@
 import threading
 
+"""
+The AVL tree is named after its inventors, Georgy Adelson-Velsky and Evgenii Landis, 
+who introduced it in their 1962 paper "An algorithm for the organization of information". 
+The name AVL comes from the initials of their last names: Adelson-Velsky and Landis.
+
+It was the first self-balancing binary search tree ever invented, designed to maintain balance and improve search efficiency.
+
+"""
 
 class AVLNode:
     # Constructor to initialize an AVL tree node.
