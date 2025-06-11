@@ -1,0 +1,4 @@
+import unittests
+from GraphShortestPath import GraphShortestPath
+
+unittests.test_shortest_path(GraphShortestPath)
