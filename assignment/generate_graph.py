@@ -3,10 +3,13 @@ import heapq
 import itertools
 from Graph import Graph
 
-def generate_graph(graph, nodes, edges=None, complete=False, weight_bounds=(1,600), seed=None):
+
+def generate_graph(
+    graph, nodes, edges=None, complete=False, weight_bounds=(1, 600), seed=None
+):
     """
     Generates a graph with specified parameters, allowing for both complete and incomplete graphs.
-    
+
     This function creates a graph with a specified number of nodes and edges, with options for creating a complete graph, and for specifying the weight bounds of the edges. It uses the Graphs class to create and manipulate the graph.
 
     Parameters:
@@ -26,10 +29,10 @@ def generate_graph(graph, nodes, edges=None, complete=False, weight_bounds=(1,60
     Examples:
     - Generating a complete graph with 5 nodes:
         generate_graph(5, complete=True)
-    
+
     - Generating an incomplete graph with 5 nodes and 2 edges per node:
         generate_graph(5, edges=2)
-    
+
     Note:
     - The function assumes the existence of a Graph class with methods for adding vertices (`add_vertex`) and edges (`add_edge`), as well as a method for getting adjacent vertices (`get_adjacent_vertices`).
     """
@@ -39,20 +42,21 @@ def generate_graph(graph, nodes, edges=None, complete=False, weight_bounds=(1,60
         raise ValueError("edges must be None if complete is set to True")
     if not complete and edges > nodes:
         raise ValueError("number of edges must be less than number of nodes")
-    
 
     for i in range(nodes):
         graph.add_vertex(i)
     if complete:
         for i in range(nodes):
-            for j in range(i+1,nodes):
+            for j in range(i + 1, nodes):
                 weight = random.randint(weight_bounds[0], weight_bounds[1])
-                graph.add_edge(i,j,weight)
+                graph.add_edge(i, j, weight)
     else:
         for i in range(nodes):
             for _ in range(edges):
                 j = random.randint(0, nodes - 1)
-                while (j == i or j in graph.get_adjacent_vertices(i)) and len(graph.get_adjacent_vertices(i)) < nodes - 1:  # Ensure the edge is not a loop or a duplicate
+                while (j == i or j in graph.get_adjacent_vertices(i)) and len(
+                    graph.get_adjacent_vertices(i)
+                ) < nodes - 1:  # Ensure the edge is not a loop or a duplicate
                     j = random.randint(0, nodes - 1)
                 weight = random.randint(weight_bounds[0], weight_bounds[1])
                 if len(graph.graph[i]) < edges and len(graph.graph[j]) < edges:
@@ -60,7 +64,9 @@ def generate_graph(graph, nodes, edges=None, complete=False, weight_bounds=(1,60
     return graph
 
 
-graph = generate_graph(graph = Graph, nodes = 10, complete = True)
+graph = generate_graph(graph=Graph, nodes=10, complete=True)
 
 # Using its methods:
 print(graph.tour_length([1, 4, 6, 8, 5]))
+
+print(graph._get_edge_weight(5, 8))
